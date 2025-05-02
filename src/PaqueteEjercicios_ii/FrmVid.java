@@ -31,7 +31,7 @@ public class FrmVid extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JtxtArea_Resumen = new javax.swing.JTextArea();
         lblResumenDeCompara = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnCalcular = new javax.swing.JButton();
         txtDineroRecibido = new javax.swing.JTextField();
@@ -52,6 +52,7 @@ public class FrmVid extends javax.swing.JFrame {
         lblApellidos = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
+        btnMostrarHistorial = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema la Botica de Don Pepe");
@@ -75,14 +76,14 @@ public class FrmVid extends javax.swing.JFrame {
         lblResumenDeCompara.setText("Resumen de la compra :");
         jPanel1.add(lblResumenDeCompara, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 190, 20));
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 153));
-        jButton1.setText("Limpiar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiar.setBackground(new java.awt.Color(255, 153, 153));
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 120, 30));
+        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 120, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 290, 460));
 
@@ -171,6 +172,14 @@ public class FrmVid extends javax.swing.JFrame {
         });
         jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 100, 30));
 
+        btnMostrarHistorial.setText("Mostrar Historial");
+        btnMostrarHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarHistorialActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnMostrarHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 160, 30));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 430, 460));
 
         setSize(new java.awt.Dimension(738, 511));
@@ -197,13 +206,45 @@ public class FrmVid extends javax.swing.JFrame {
         JtxtArea_Resumen.setText(venta.mostrarResumen());//muestta en el text area
     }//GEN-LAST:event_btnCalcularActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+      txtNombres.setText("");
+    txtApellidos.setText("");
+    txtDni.setText("");
+    txtNombreMedi.setText("");
+    txtPrecio.setText("");
+    txtCantidadMedi.setText("");
+    txtMetPago.setText("");
+    txtDineroRecibido.setText("");
+    
+    
+    
+    JtxtArea_Resumen.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
      System.exit(0); 
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnMostrarHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarHistorialActionPerformed
+    String nombres = txtNombres.getText();
+String apellidos = txtApellidos.getText();
+String dni = txtDni.getText();
+String medicamento = txtNombreMedi.getText();
+String precio = txtPrecio.getText();
+String cantidad = txtCantidadMedi.getText();
+String metodoPago = txtMetPago.getText();
+String dinero = txtDineroRecibido.getText();
+
+String resumen = "Cliente: " + nombres + " " + apellidos + "\n"
+               + "DNI: " + dni + "\n"
+               + "Medicamento: " + medicamento + "\n"
+               + "Precio unitario: S/. " + precio + "\n"
+               + "Cantidad: " + cantidad + "\n"
+               + "Método de pago: " + metodoPago + "\n"
+               + "Dinero recibido: S/. " + dinero + "\n";
+
+JtxtArea_Resumen.setText(resumen);  
+    }//GEN-LAST:event_btnMostrarHistorialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,8 +284,9 @@ public class FrmVid extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea JtxtArea_Resumen;
     private javax.swing.JButton btnCalcular;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnMostrarHistorial;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
